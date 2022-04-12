@@ -1,0 +1,8 @@
+name: Gradle Run Tests on push
+on: [push]
+jobs:
+  build:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 1.11
