@@ -20,4 +20,13 @@ public class UserService {
     public void createNewUser(User user){
         userRepository.save(user);
     }
+
+    /**
+     * Get a User by their user ID number
+     * @param id The provided user ID
+     * @return A User object
+     */
+    public User getUserById(Integer id) {
+        return userRepository.findById(id).get();
+    }
 }

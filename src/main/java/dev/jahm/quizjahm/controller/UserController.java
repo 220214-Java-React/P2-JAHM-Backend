@@ -26,4 +26,12 @@ public class UserController {
         return userService.getAllUsers();
     }
 
+    /**
+     * A test endpoint.
+     * @return
+     */
+    @RequestMapping("/hello")
+    public @ResponseBody String greeting() {
+        return "Hello, World";
+    }
 }
