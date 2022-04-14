@@ -6,6 +6,7 @@ import dev.jahm.quizjahm.model.User;
 import dev.jahm.quizjahm.service.FriendService;
 import dev.jahm.quizjahm.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,7 +27,6 @@ public class FriendController {
      * @return Friend list
      */
     @GetMapping("/{id}")
-    @CrossOrigin
     public List<Friend> getFriendsByUser(@PathVariable Integer id) {
         return friendService.getFriendsByUser(userService.getUserById(id));
     }
@@ -36,7 +36,7 @@ public class FriendController {
      * @param objectNode
      */
     @PostMapping("/add")
-    @CrossOrigin
+    @ResponseStatus(code = HttpStatus.OK, reason = "OK")
     public void createNewFriendPair(@RequestBody ObjectNode objectNode) {
         Integer friend1 = objectNode.get("friend1").asInt();
         Integer friend2 = objectNode.get("friend2").asInt();
