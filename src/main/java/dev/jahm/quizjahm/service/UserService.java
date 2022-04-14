@@ -29,4 +29,13 @@ public class UserService {
     public User getUserById(Integer id) {
         return userRepository.findById(id).get();
     }
+
+    /**
+     * Get a User by their username
+     * @param username The provided username
+     * @return A User object
+     */
+    public User getUserByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
 }
