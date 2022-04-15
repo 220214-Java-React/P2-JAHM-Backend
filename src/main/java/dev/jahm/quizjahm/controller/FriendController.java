@@ -44,6 +44,18 @@ public class FriendController {
     }
 
     /**
+     * Delete a friend pairing
+     * @param
+     */
+    @DeleteMapping("/delete")
+    @ResponseStatus(code = HttpStatus.OK, reason = "OK")
+    public void deleteFriend(@RequestBody ObjectNode objectNode) {
+        Integer friend1 = objectNode.get("friend1").asInt();
+        Integer friend2 = objectNode.get("friend2").asInt();
+        friendService.deleteFriend(friend1, friend2);
+    }
+
+    /**
      * Mainly for debug purposes. Returns all Friend objects in the system.
      * @return
      */
