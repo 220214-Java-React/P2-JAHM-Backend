@@ -5,11 +5,13 @@ import javax.persistence.*;
 @Entity(name = "friends")
 public class Friend {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int pairID;
-    @ManyToOne
-    @JoinColumn(name = "user_1_id")
+
+    @OneToOne
+    @JoinColumn(name = "user_1_id", referencedColumnName = "id")
     private User user1;
+
     @ManyToOne
     @JoinColumn(name = "user_2_id")
     private User user2;
