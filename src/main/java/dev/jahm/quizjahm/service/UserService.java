@@ -1,10 +1,13 @@
 package dev.jahm.quizjahm.service;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import dev.jahm.quizjahm.model.User;
 import dev.jahm.quizjahm.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @Service
@@ -13,11 +16,16 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
+    private final BCrypt.Hasher hasher = BCrypt.withDefaults();
+    private final String SALT = "sRXwq6fTMJ?gupD.";
+
     public List<User> getAllUsers(){
         return userRepository.findAll();
     }
 
     public void createNewUser(User user){
+        user.setPassword(PasswordEncrypt(user.getPassword()));
+
         userRepository.save(user);
     }
 
@@ -38,4 +46,22 @@ public class UserService {
     public User getUserByUsername(String username) {
         return userRepository.findByUsername(username);
     }
+
+
+    /**
+     * Encrypt the password of users
+     * @param password The provided password
+     * @return A String containing the freshly encrypted password.
+     */
+    public String PasswordEncrypt (String password){ 
+
+
+        return new String(
+                hasher.hash(4, SALT.getBytes(StandardCharsets.UTF_8),
+                        password.getBytes(StandardCharsets.UTF_8)),
+                StandardCharsets.UTF_8);
+
+    }
+
 }
+
