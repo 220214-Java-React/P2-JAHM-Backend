@@ -18,9 +18,7 @@ public class Score {
     private int scoreID;
 
     private int points;
-
     private String quizMode;
-
     private String quizDifficulty;
 
     @ManyToOne
