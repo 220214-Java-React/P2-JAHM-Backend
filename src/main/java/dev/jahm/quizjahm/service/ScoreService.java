@@ -17,4 +17,8 @@ public class ScoreService {
 
         return scoreRepository.getAllByPlayerId(playerId);
     }
+
+    public void createNewScore(Score score) {
+        scoreRepository.save(score);
+    }
 }
