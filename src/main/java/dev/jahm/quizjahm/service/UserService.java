@@ -47,7 +47,13 @@ public class UserService {
         return userRepository.findByUsername(username);
     }
 
-    public String PasswordEncrypt (String password){ //encrypt the password
+
+    /**
+     * Encrypt the password of users
+     * @param password The provided password
+     * @return A String containing the freshly encrypted password.
+     */
+    public String PasswordEncrypt (String password){ 
 
 
         return new String(
