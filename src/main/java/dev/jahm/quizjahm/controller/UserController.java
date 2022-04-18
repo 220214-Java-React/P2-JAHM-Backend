@@ -38,7 +38,7 @@ public class UserController {
 
     @PostMapping("/login")
     public User authUser(@RequestBody User user){
-        return(userService.authorizeUser(user));
+        return userService.authorizeUser(user);
     }
 
     /**
