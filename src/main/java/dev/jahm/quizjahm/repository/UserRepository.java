@@ -16,4 +16,12 @@ public interface UserRepository extends JpaRepository<User, Integer> {
      * @return Matching User
      */
     User findByUsername(String username);
+
+    /**
+     * Return a User with a username and password matching the query.
+     * @param username Username of user to locate
+     * @param password Password of user to confirm
+     * @return Matching User
+     */
+    User authorizeUser(String username, String password);
 }
