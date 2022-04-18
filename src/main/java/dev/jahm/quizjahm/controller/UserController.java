@@ -36,6 +36,11 @@ public class UserController {
         return userService.getAllUsers();
     }
 
+    @PostMapping("/login")
+    public User authUser(@RequestBody User user){
+        return(userService.authorizeUser(user));
+    }
+
     /**
      * A test endpoint.
      * @return

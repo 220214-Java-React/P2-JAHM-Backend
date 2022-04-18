@@ -63,5 +63,11 @@ public class UserService {
 
     }
 
+    public User authorizeUser(User user) {
+
+        user.setPassword(PasswordEncrypt(user.getPassword()));
+
+       return(userRepository.authorizeUser(user.getUsername(), user.getPassword()));
+    }
 }
 
