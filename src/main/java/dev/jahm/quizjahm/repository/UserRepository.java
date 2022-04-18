@@ -23,5 +23,5 @@ public interface UserRepository extends JpaRepository<User, Integer> {
      * @param password Password of user to confirm
      * @return Matching User
      */
-    User authorizeUser(String username, String password);
+    User findByUsernameAndPassword(String username, String password);
 }
