@@ -6,7 +6,7 @@ import dev.jahm.quizjahm.repository.FriendRepository;
 import dev.jahm.quizjahm.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sun.tools.jconsole.JConsole;
+
 
 import java.util.List;
 
